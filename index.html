@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIN HỌC VĂN PHÒNG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: rgb(0, 0, 0);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }
+        .trangchu {
+            height: 550px;
+            padding: 80px 7%;
+            display:flex;
+            justify-self: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+        .trangchu h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin: 15px 0;
+        }
+        .trangchu h1 span {
+            color: #2563eb;
+        }
+        .trangchu p {
+            font-size: 19px;
+            color: #475569;
+            width: 650px;
+        }   
+        img {
+            width: 500px;
+            height: auto;
+            margin: 0;
+            padding: 0px;
+        }
+        .thongke {
+            background: #0f172a;
+            color: #fff;
+            padding: 45px 7%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+        }
+        .thongke .item {
+            flex: 1;
+            min-width: 150px;
+        }
+        .thongke .item .so {
+            font-size: 38px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        .thongke .item .nhan {
+            font-size: 15px;
+            color: #cbd5e1;
+            margin-top: 5px;
+        }
+        .khoahoc {
+            padding: 70px 7%;
+            text-align: center;
+        }
+        .khoahoc h2 {
+            font-size: 34px;
+            color: #0f172a;
+        }
+        .khoahoc h2 span {
+            color: #2563eb;
+        }
+        .khoahoc > p {
+            color: #475569;
+            max-width: 650px;
+            margin: 10px auto 40px;
+        }
+        .khoahoc-list {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .khoahoc-list .card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px 25px;
+            width: 260px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .khoahoc-list .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .khoahoc-list .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .khoahoc-list h3 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .khoahoc-list p {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .danhgia {
+            background: #eef2ff;
+            padding: 70px 7%;
+            text-align: center;
+        }
+        .danhgia h2 {
+            font-size: 34px;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+        .danhgia h2 span {
+            color: #2563eb;
+        }
+        .danhgia-list {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .danhgia-list .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px 24px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .danhgia-list .sao {
+            color: #f59e0b;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .danhgia-list .noidung {
+            font-size: 14px;
+            color: #334155;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .danhgia-list .nguoi {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .danhgia-list .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .danhgia-list .ten {
+            font-weight: bold;
+            font-size: 14px;
+            color: #0f172a;
+        }
+        .danhgia-list .vaitro {
+            font-size: 12px;
+            color: #64748b;
+        }
+        .gioithieu {
+            padding: 70px 7%;
+            background: white;
+        }
+        .gioithieu .title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+        .gioithieu .title h2 {
+            font-size: 34px;
+            color: #0f172a;
+        }
+        .gioithieu .title h2 span {
+            color: #2563eb;
+        }
+        .gioithieu .title p {
+            color: #475569;
+            margin-top: 12px;
+        }
+        .gioithieu-list {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .gioithieu-list .the {
+            width: 230px;
+            text-align: center;
+            padding: 25px 20px;
+        }
+        .gioithieu-list .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: #eef2ff;
+            color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+        .gioithieu-list h3 {
+            font-size: 17px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .gioithieu-list p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+</header>
+    <nav>
+        <a href="">Trang chủ</a>
+        <a href="./webcon/baihoc.html">Bài học</a>
+        <a href="./webcon/lythuyet.html">Lý thuyết</a>
+        <a href="./webcon/hinhanh.html">Hình ảnh</a>
+        <a href="./webcon/vide.html">Video</a>
+        <a href="./webcon/baitap.html">Bài tập</a>
+        <a href="./webcon/lienhe.html">Liên hệ</a>
+    </nav>
+<section class="trangchu">    
+    <div>
+        <p>Tin Học Văn Phòng</p>
+        <h1>
+            Học <span>TIN HỌC</span>
+            <br>
+            thật dễ dàng
+        </h1>
+        <p>
+            Tin học văn phòng dành cho học sinh,
+            sinh viên. Học từ cơ bản đến nâng cao
+            thông qua lí thuyết và bài tập.
+        </p>
+    </div> 
+    <div>
+        <img src="./img/anh11.png" alt="anh">
+    </div>        
+</section>
+<section class="gioithieu">
+    <div class="title">
+        <h2>Giới thiệu <span>tổng quan</span> về Tin Học Văn Phòng</h2>
+        <p>
+            TIN HỌC VĂN PHÒNG là trang web học tập miễn phí, giúp học sinh, sinh viên
+            và người đi làm tự học Word, Excel, PowerPoint cùng các kỹ năng máy tính
+            văn phòng theo lộ trình rõ ràng — từ lý thuyết, hình ảnh minh họa, video
+            hướng dẫn cho đến bài tập thực hành để tự kiểm tra kiến thức.
+        </p>
+    </div>
+    <div class="gioithieu-list">
+        <div class="the">
+            <div class="icon">📘</div>
+            <h3>Bài học theo lộ trình</h3>
+            <p>Nội dung sắp xếp theo từng bước, dễ theo dõi từ cơ bản đến nâng cao.</p>
+        </div>
+        <div class="the">
+            <div class="icon">📝</div>
+            <h3>Lý thuyết chi tiết</h3>
+            <p>Tổng hợp kiến thức Word, Excel, PowerPoint và an toàn thông tin.</p>
+        </div>
+        <div class="the">
+            <div class="icon">🎬</div>
+            <h3>Hình ảnh & Video</h3>
+            <p>Minh họa trực quan giúp dễ hình dung thao tác thực tế.</p>
+        </div>
+        <div class="the">
+            <div class="icon">✅</div>
+            <h3>Bài tập thực hành</h3>
+            <p>Câu hỏi ôn tập theo từng chủ đề để tự đánh giá kết quả học.</p>
+        </div>
+    </div>
+</section>
+<section class="thongke">
+    <div class="item">
+        <div class="so">1200+</div>
+        <div class="nhan">Học viên đã tham gia</div>
+    </div>
+    <div class="item">
+        <div class="so">45</div>
+        <div class="nhan">Bài học chi tiết</div>
+    </div>
+    <div class="item">
+        <div class="so">80+</div>
+        <div class="nhan">Bài tập thực hành</div>
+    </div>
+    <div class="item">
+        <div class="so">4.8/5</div>
+        <div class="nhan">Đánh giá trung bình</div>
+    </div>
+</section>
+<section class="khoahoc">
+    <h2>Các <span>khóa học</span> nổi bật</h2>
+    <p>Lộ trình học rõ ràng theo từng phần mềm, phù hợp cho người mới bắt đầu đến nâng cao.</p>
+    <div class="khoahoc-list">
+        <div class="card">
+            <div class="icon">📄</div>
+            <h3>Word cơ bản đến nâng cao</h3>
+            <p>Soạn thảo văn bản, định dạng, tạo mục lục, trộn thư và các mẹo trình bày chuyên nghiệp.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Excel cho công việc</h3>
+            <p>Hàm tính toán, bảng biểu, lọc dữ liệu, biểu đồ và các thủ thuật xử lý số liệu nhanh.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📽️</div>
+            <h3>PowerPoint chuyên nghiệp</h3>
+            <p>Thiết kế slide đẹp mắt, hiệu ứng chuyển động và kỹ năng thuyết trình hiệu quả.</p>
+        </div>
+        <div class="card">
+            <div class="icon">💻</div>
+            <h3>Kỹ năng máy tính căn bản</h3>
+            <p>Làm quen hệ điều hành, quản lý file, gõ phím nhanh và các thao tác văn phòng thiết yếu.</p>
+        </div>
+    </div>
+</section>
+
+<section class="danhgia">
+    <h2>Học viên nói gì về <span>khóa học</span></h2>
+    <div class="danhgia-list">
+        <div class="card">
+            <div class="sao">★★★★★</div>
+            <div class="noidung">"Bài giảng dễ hiểu, có nhiều bài tập thực hành nên mình nắm Excel nhanh hơn hẳn."</div>
+            <div class="nguoi">
+                <div class="avatar">H</div>
+                <div>
+                    <div class="ten">Nguyễn Thị Hoa</div>
+                    <div class="vaitro">Sinh viên năm 2</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="sao">★★★★★</div>
+            <div class="noidung">"Trang web trình bày gọn gàng, dễ tra cứu lý thuyết khi cần ôn lại."</div>
+            <div class="nguoi">
+                <div class="avatar">T</div>
+                <div>
+                    <div class="ten">Trần Văn Tùng</div>
+                    <div class="vaitro">Nhân viên văn phòng</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="sao">★★★★☆</div>
+            <div class="noidung">"Phần bài tập khá đa dạng, giúp mình áp dụng ngay vào công việc thực tế."</div>
+            <div class="nguoi">
+                <div class="avatar">L</div>
+                <div>
+                    <div class="ten">Lê Minh Anh</div>
+                    <div class="vaitro">Kế toán</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+</body>
+</html>
