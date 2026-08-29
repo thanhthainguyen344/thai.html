@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .title p {
+            text-align: center;
+            color: #475569;
+            max-width: 650px;
+            margin: 10px auto 0;
+        }
+
+        .khung-lienhe {
+            display: flex;
+            gap: 35px;
+            max-width: 1100px;
+            margin: 45px auto 0;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .thongtin {
+            flex: 1;
+            min-width: 280px;
+            background: #0f172a;
+            color: white;
+            border-radius: 18px;
+            padding: 35px 30px;
+        }
+        .thongtin h3 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .thongtin .dong {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 22px;
+            align-items: flex-start;
+        }
+        .thongtin .icon {
+            font-size: 20px;
+            width: 28px;
+        }
+        .thongtin .nhan {
+            font-size: 13px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .thongtin .gia-tri {
+            font-size: 15px;
+            color: white;
+        }
+        .mxh {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .mxh a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .mxh a:hover {
+            background: #38bdf8;
+        }
+
+        /* Cột form liên hệ */
+        .form-lienhe {
+            flex: 1.3;
+            min-width: 320px;
+            background: white;
+            border-radius: 18px;
+            padding: 35px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .form-lienhe h3 {
+            color: #0f172a;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .form-lienhe label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #334155;
+        }
+        .form-lienhe input,
+        .form-lienhe textarea {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            background: #f8fafc;
+        }
+        .form-lienhe input:focus,
+        .form-lienhe textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+        }
+        .form-lienhe textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .hang-doi {
+            display: flex;
+            gap: 18px;
+        }
+        .hang-doi > div {
+            flex: 1;
+        }
+        .form-lienhe button {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form-lienhe button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Bản đồ */
+        .bando {
+            max-width: 1100px;
+            margin: 35px auto 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .bando iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            display: block;
+        }
+
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+        nav a.active {
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 10px;
+        }
+        .form-lienhe input.loi,
+        .form-lienhe textarea.loi {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .thong-bao-loi {
+            font-size: 12px;
+            color: #ef4444;
+            margin-top: -14px;
+            margin-bottom: 14px;
+            display: none;
+        }
+        .thong-bao-loi.hien {
+            display: block;
+        }
+        .thong-bao-thanhcong {
+            display: none;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+        .thong-bao-thanhcong.hien {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+    <div class="header-dieukhien">
+        <button id="toggle-theme" class="btn-icon" title="Chuyển giao diện sáng/tối">🌙</button>
+        <button id="hamburger" class="btn-icon hamburger" title="Menu">☰</button>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./quiz.html">Câu hỏi</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+
+<section id="lienhe">
+    <div class="title">
+        <h2>Liên hệ với chúng tôi</h2>
+        <p>Có thắc mắc về bài học hay muốn góp ý cho website? Hãy để lại lời nhắn, chúng tôi sẽ phản hồi sớm nhất có thể.</p>
+    </div>
+
+    <div class="khung-lienhe">
+        <div class="thongtin">
+            <h3>Thông tin liên hệ</h3>
+            <div class="dong">
+                <div class="icon">👤</div>
+                <div>
+                    <div class="nhan">Người phụ trách</div>
+                    <div class="gia-tri">Nguyễn Thanh Thái</div>
+                </div>
+            </div>
+            <div class="dong">
+                <div class="icon">📞</div>
+                <div>
+                    <div class="nhan">Số điện thoại</div>
+                    <div class="gia-tri">0345 649 219</div>
+                </div>
+            </div>
+            <div class="dong">
+                <div class="icon">✉️</div>
+                <div>
+                    <div class="nhan">Email</div>
+                    <div class="gia-tri">lienhe@tinhocvanphong.edu.vn</div>
+                </div>
+            </div>
+            <div class="dong">
+                <div class="icon">📍</div>
+                <div>
+                    <div class="nhan">Địa chỉ</div>
+                    <div class="gia-tri">Ấp Tân Thạnh, Xã Tân Long, Tỉnh Đồng Tháp</div>
+                </div>
+            </div>
+            <div class="dong">
+                <div class="icon">🕒</div>
+                <div>
+                    <div class="nhan">Giờ hỗ trợ</div>
+                    <div class="gia-tri">Thứ 2 - Thứ 7, 8:00 - 17:00</div>
+                </div>
+            </div>
+            <div class="mxh">
+                <a href="#" title="Facebook">f</a>
+                <a href="#" title="YouTube">▶</a>
+                <a href="#" title="Zalo">Z</a>
+            </div>
+        </div>
+
+        <div class="form-lienhe">
+            <h3>Gửi lời nhắn</h3>
+            <div class="thong-bao-thanhcong" id="thanhcong">
+                ✓ Cảm ơn bạn đã gửi lời nhắn! Chúng tôi sẽ phản hồi sớm nhất có thể.
+            </div>
+            <form id="form-lienhe" novalidate>
+                <div class="hang-doi">
+                    <div>
+                        <label for="ten">Họ và tên</label>
+                        <input type="text" id="ten" name="ten" placeholder="Nhập họ và tên">
+                        <div class="thong-bao-loi" id="loi-ten">Vui lòng nhập họ và tên.</div>
+                    </div>
+                    <div>
+                        <label for="sdt">Số điện thoại</label>
+                        <input type="tel" id="sdt" name="sdt" placeholder="Nhập số điện thoại">
+                        <div class="thong-bao-loi" id="loi-sdt">Số điện thoại không hợp lệ (10 chữ số).</div>
+                    </div>
+                </div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email">
+                <div class="thong-bao-loi" id="loi-email">Địa chỉ email không hợp lệ.</div>
+                <label for="loinhan">Nội dung</label>
+                <textarea id="loinhan" name="loinhan" placeholder="Bạn cần hỗ trợ điều gì?"></textarea>
+                <div class="thong-bao-loi" id="loi-loinhan">Vui lòng nhập nội dung cần hỗ trợ.</div>
+                <button type="submit">Gửi lời nhắn</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="bando">
+        <iframe
+            src="https://www.google.com/maps?q=T%C3%A2n%20Long%2C%20Th%E1%BB%9Bp%20M%C6%B0%E1%BB%9Di%2C%20%C4%90%E1%BB%93ng%20Th%C3%A1p&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+    (function () {
+        const form = document.getElementById("form-lienhe");
+        if (!form) return;
+
+        const ten = document.getElementById("ten");
+        const sdt = document.getElementById("sdt");
+        const email = document.getElementById("email");
+        const loinhan = document.getElementById("loinhan");
+        const thanhcong = document.getElementById("thanhcong");
+
+        function hienLoi(input, idLoi, dieuKien) {
+            const oLoi = document.getElementById(idLoi);
+            if (dieuKien) {
+                input.classList.remove("loi");
+                oLoi.classList.remove("hien");
+                return true;
+            } else {
+                input.classList.add("loi");
+                oLoi.classList.add("hien");
+                return false;
+            }
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            thanhcong.classList.remove("hien");
+
+            const tenHopLe = ten.value.trim().length >= 2;
+            const sdtHopLe = /^[0-9]{9,11}$/.test(sdt.value.trim());
+            const emailHopLe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+            const loinhanHopLe = loinhan.value.trim().length >= 5;
+
+            const ok1 = hienLoi(ten, "loi-ten", tenHopLe);
+            const ok2 = hienLoi(sdt, "loi-sdt", sdtHopLe);
+            const ok3 = hienLoi(email, "loi-email", emailHopLe);
+            const ok4 = hienLoi(loinhan, "loi-loinhan", loinhanHopLe);
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                thanhcong.classList.add("hien");
+                form.reset();
+                toast("Đã gửi lời nhắn thành công ✓");
+            } else {
+                toast("Vui lòng kiểm tra lại thông tin");
+            }
+        });
+    })();
+</script>
+</body>
+</html>

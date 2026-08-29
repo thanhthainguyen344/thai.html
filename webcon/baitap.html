@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+         nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }
+        .trangchu {
+            height: 550px;
+            padding: 80px 7%;
+            display: grid;
+            align-items: center;
+            gap: 50px;
+        }
+        .trangchu h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin: 15px 0;
+        }
+        .trangchu h1 span {
+            color: #2563eb;
+        }
+        .trangchu p {
+            font-size: 19px;
+            color: #475569;
+            width: 650px;
+        }
+        .bđ {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .bđ:hover {
+            background: #1d4ed8;
+            color: yellow;
+        }       
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .bang {
+            display: grid;
+            grid-template-columns:auto auto auto;
+            gap: 25px;
+        }
+        .n {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .n:hover {
+            transform: translateY(-15px);
+        }
+        .n h3 {
+            color: #2563eb;
+            margin: 10px 0;
+        }
+        .noidung {
+            width: 900px;
+            margin: auto;
+            background: #0b1120;
+            color: white;
+            padding: 30px;
+            }
+        #tailieu{
+            color:blue;
+            text-decoration: none;
+            margin-right:auto ;
+            text-align: right;
+        }
+        .anh {
+            display: grid;
+            grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .anh img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .anh img:hover {
+            transform: scale(1.2);
+        }
+        .video {
+            width: 720px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 18px;
+        }
+        .video img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px gray;
+        }
+        .btvn {
+            color: white;
+            width: 1200px;
+            margin: auto;
+            margin-bottom: 0px ;
+            background: black;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow:0 5px 20px black;
+        }    
+        .btvn a{
+            color: blue;
+            text-align: right;
+            justify-content: right;
+        }
+        .btvn h3 {
+            color: #38bdf8;
+            margin: 22px 0 8px;
+        }
+        .btvn h3:first-child {
+            margin-top: 0;
+        }
+        .btvn p {
+            margin-bottom: 8px;
+        }
+        .tim-kiem-khung {
+            width: 500px;
+            max-width: 90%;
+            margin: 0 auto 25px;
+        }
+        .tim-kiem-khung input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+        .tim-kiem-khung input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        #khong-co-ket-qua {
+            display: none;
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+        .huongdan {
+            width: 1200px;
+            margin: 0 auto 25px;
+            background: #eef2ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 10px;
+            padding: 20px 25px;
+            color: #1e293b;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+        nav a.active {
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 10px;
+        }
+        .tiendo-khung {
+            width: 1200px;
+            margin: 0 auto 25px;
+        }
+        .tiendo-nhan {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+        .tiendo-thanh {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .tiendo-fill {
+            height: 100%;
+            width: 0%;
+            background: #22c55e;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+        .cau {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .cau input {
+            margin-top: 5px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .cau p {
+            margin-bottom: 0 !important;
+        }
+        .cau.xong p {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+    </style>
+    <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+    <div class="header-dieukhien">
+        <button id="toggle-theme" class="btn-icon" title="Chuyển giao diện sáng/tối">🌙</button>
+        <button id="hamburger" class="btn-icon hamburger" title="Menu">☰</button>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./quiz.html">Câu hỏi</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section id="baitap">
+    <div class="title">
+        <h2>
+                Bài tập về nhà
+        </h2>
+    </div>
+    <div class="huongdan">
+        <strong>Hướng dẫn nộp bài:</strong> Làm bài vào file Word hoặc PDF, đặt tên file theo họ tên,
+        sau đó nộp qua đường link Google Drive bên dưới trước thời hạn quy định của lớp.
+    </div>
+    <div class="tim-kiem-khung">
+        <input type="text" id="tim-kiem-baitap" placeholder="Tìm câu hỏi theo từ khóa (VD: Excel, bảng, trộn thư...)">
+    </div>
+    <p id="khong-co-ket-qua">Không tìm thấy câu hỏi phù hợp với từ khóa.</p>
+    <div class="tiendo-khung">
+        <div class="tiendo-nhan">
+            <span>Tiến độ làm bài</span>
+            <span id="tiendo-text">0/12 câu đã hoàn thành</span>
+        </div>
+        <div class="tiendo-thanh">
+            <div class="tiendo-fill" id="tiendo-fill"></div>
+        </div>
+    </div>
+    <div class="btvn">
+        <div>
+        <h3>A. Kiến thức chung</h3>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="1"><p>Câu 1. Trình bày khái niệm Tin học văn phòng. 
+        Hãy nêu vai trò của Tin học văn phòng trong học tập và công việc?</p></div>
+
+        <h3>B. Microsoft Word</h3>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="2"><p>Câu 2. Microsoft Word là gì? 
+        Hãy trình bày các chức năng cơ bản của Microsoft Word và cho biết cách định dạng một đoạn văn bản?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="3"><p>Câu 3. Trình bày cách tạo, lưu, mở và in một văn bản trong Microsoft Word. 
+        Nêu một số định dạng tệp phổ biến của Word?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="4"><p>Câu 4. Hãy trình bày cách chèn và định dạng bảng (Table) trong Microsoft Word. 
+        Nêu các thao tác có thể thực hiện đối với một bảng?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="5"><p>Câu 5. Trình bày cách sử dụng chức năng trộn thư (Mail Merge) trong Word. 
+        Chức năng này thường được ứng dụng trong những trường hợp nào?</p></div>
+
+        <h3>C. Microsoft Excel</h3>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="6"><p>Câu 6. Microsoft Excel là gì?
+        Hãy trình bày cấu trúc của một bảng tính Excel và phân biệt ô, hàng, cột và trang tính?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="7"><p>Câu 7. Trình bày cách sử dụng các hàm SUM, AVERAGE, MAX, MIN và COUNT trong Microsoft Excel. 
+        Cho ví dụ minh họa cho từng hàm?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="8"><p>Câu 8. Hãy giải thích khái niệm địa chỉ ô tương đối và địa chỉ ô tuyệt đối trong Excel. 
+        Cho ví dụ và nêu trường hợp sử dụng của từng loại?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="9"><p>Câu 9. Trình bày cách sử dụng hàm điều kiện IF và hàm VLOOKUP trong Excel. 
+        Cho ví dụ minh họa cụ thể?</p></div>
+
+        <h3>D. Microsoft PowerPoint</h3>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="10"><p>Câu 10. Microsoft PowerPoint là gì? 
+        Hãy trình bày các bước cơ bản để tạo một bài thuyết trình bằng PowerPoint?</p></div>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="11"><p>Câu 11. Trình bày cách chèn hình ảnh, âm thanh, video và hiệu ứng chuyển slide trong Microsoft PowerPoint. 
+        Theo em, cần lưu ý gì để bài thuyết trình dễ theo dõi?</p></div>
+
+        <h3>E. An toàn thông tin</h3>
+        <div class="cau"><input type="checkbox" class="check-cau" data-cau="12"><p>Câu 12. Hãy nêu các nguyên tắc cơ bản để bảo đảm an toàn và bảo mật thông tin khi sử dụng máy tính 
+        và Internet trong môi trường văn phòng?</p></div>
+        </div>
+        <a href="https://drive.google.com/drive/folders/10M5jtUxFeshGahiLB4NtN2-7uSMA6JvB?usp=drive_link" target="_blank">Link nộp bài tập</a>
+    </div>
+</section>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+    (function () {
+        const KHOA = "tinhocvp_baitap_tiendo";
+        const checkboxes = document.querySelectorAll(".check-cau");
+        const tiendoFill = document.getElementById("tiendo-fill");
+        const tiendoText = document.getElementById("tiendo-text");
+        const tongSo = checkboxes.length;
+
+        function layDaLuu() {
+            try {
+                return JSON.parse(localStorage.getItem(KHOA)) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function capNhatTiendo() {
+            const daLuu = layDaLuu();
+            let soXong = 0;
+            checkboxes.forEach((cb) => {
+                const cau = cb.dataset.cau;
+                const the = cb.closest(".cau");
+                if (daLuu[cau]) {
+                    cb.checked = true;
+                    the.classList.add("xong");
+                    soXong++;
+                } else {
+                    cb.checked = false;
+                    the.classList.remove("xong");
+                }
+            });
+            const phanTram = tongSo ? Math.round((soXong / tongSo) * 100) : 0;
+            tiendoFill.style.width = phanTram + "%";
+            tiendoText.textContent = soXong + "/" + tongSo + " câu đã hoàn thành";
+        }
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener("change", () => {
+                const daLuu = layDaLuu();
+                daLuu[cb.dataset.cau] = cb.checked;
+                localStorage.setItem(KHOA, JSON.stringify(daLuu));
+                capNhatTiendo();
+                toast(cb.checked ? "Đã đánh dấu đã làm ✓" : "Đã bỏ đánh dấu");
+            });
+        });
+
+        capNhatTiendo();
+    })();
+    (function () {
+        const oTimKiem = document.getElementById("tim-kiem-baitap");
+        const cauHoi = document.querySelectorAll(".cau");
+        const khongCoKq = document.getElementById("khong-co-ket-qua");
+        if (!oTimKiem) return;
+
+        oTimKiem.addEventListener("input", () => {
+            const tuKhoa = oTimKiem.value.trim().toLowerCase();
+            let soHienThi = 0;
+            cauHoi.forEach((cau) => {
+                const khop = cau.textContent.toLowerCase().includes(tuKhoa);
+                cau.style.display = khop ? "" : "none";
+                if (khop) soHienThi++;
+            });
+            khongCoKq.style.display = soHienThi === 0 ? "block" : "none";
+        });
+    })();
+</script>
+</body>
+</html>

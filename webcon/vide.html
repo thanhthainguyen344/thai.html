@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content:right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }     
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .video {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 18px;
+            display: grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .video figure {
+            margin: 0;
+        }
+        .video img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px gray;
+            transition: 0.3s;
+        }
+        .video img:hover {
+            transform: scale(1.03);
+        }
+        .video figcaption {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+        nav a.active {
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 10px;
+        }
+        .video img {
+            cursor: pointer;
+        }
+        .video-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            background: rgba(15,23,42,0.75);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            pointer-events: none;
+        }
+        .video figure {
+            position: relative;
+        }
+        #modal-video {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #modal-video.mo {
+            display: flex;
+        }
+        .modal-video-khung {
+            width: 100%;
+            max-width: 800px;
+            background: black;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .modal-video-khung iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0;
+            display: block;
+        }
+        .modal-dong {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+    <div class="header-dieukhien">
+        <button id="toggle-theme" class="btn-icon" title="Chuyển giao diện sáng/tối">🌙</button>
+        <button id="hamburger" class="btn-icon hamburger" title="Menu">☰</button>
+    </div>
+</header>    
+    <nav>
+        <a href="../index.html" >Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./quiz.html">Câu hỏi</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section class="video">
+    <div class="title">
+        <h2>
+             Video học Tin học
+        </h2>    
+    </div>
+    <div class="video">
+        <figure>
+            <a href="https://youtu.be/kEQSq-zQias?si=hKSMZ2LZeiAwFP_C" class="video-play" data-yt="kEQSq-zQias">
+                <img src="../img/anh4" alt="Video hướng dẫn Word">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Hướng dẫn cơ bản Microsoft Word</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/oVvV6HvAKc8?si=CRfEV65uVdVL9_dG" class="video-play" data-yt="oVvV6HvAKc8">
+                <img src="../img/anh8" alt="Video hướng dẫn Excel">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Hướng dẫn hàm cơ bản trong Excel</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/9gPJtkthTYs?si=nb9_7CMiBbOw43f7" class="video-play" data-yt="9gPJtkthTYs">
+                <img src="../img/anh9" alt="Video hướng dẫn PowerPoint">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Hướng dẫn tạo slide PowerPoint</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/2u4YbJJvVWs" class="video-play" data-yt="2u4YbJJvVWs">
+                <img src="../img/anh14.jpg" alt="Video Excel nâng cao">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Hàm Excel nâng cao (IF, VLOOKUP)</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/YSuwB4bFCLU" class="video-play" data-yt="YSuwB4bFCLU">
+                <img src="../img/anh15.jpg" alt="Video hiệu ứng PowerPoint">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Hiệu ứng chuyển động trong PowerPoint</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/mPQL9hHm_5o" class="video-play" data-yt="mPQL9hHm_5o">
+                <img src="../img/anh16" alt="Video mẹo tin học văn phòng">
+                <span class="video-play-icon">▶</span>
+            </a>
+            <figcaption>Mẹo và phím tắt tin học văn phòng</figcaption>
+        </figure>
+    </div>
+</section>
+
+<div id="modal-video">
+    <div class="modal-video-khung">
+        <button class="modal-dong" id="modal-dong" title="Đóng">×</button>
+        <iframe id="modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+    (function () {
+        const modal = document.getElementById("modal-video");
+        const iframe = document.getElementById("modal-iframe");
+        const nutDong = document.getElementById("modal-dong");
+
+        document.querySelectorAll(".video-play").forEach((a) => {
+            a.addEventListener("click", (e) => {
+                e.preventDefault();
+                const id = a.dataset.yt;
+                iframe.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+                modal.classList.add("mo");
+            });
+        });
+
+        function dongModal() {
+            modal.classList.remove("mo");
+            iframe.src = "";
+        }
+
+        nutDong.addEventListener("click", dongModal);
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) dongModal();
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") dongModal();
+        });
+    })();
+</script>
+</body>
+</html>

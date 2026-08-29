@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: rgb(0, 0, 0);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }             
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .bang {
+            display: grid;
+            grid-template-columns:auto auto auto;
+            gap: 25px;
+        }
+        .n {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .n:hover {
+            transform: translateY(-15px);
+        }
+        .n h3 {
+            color: #2563eb;
+            margin: 10px 0;
+        }
+        .n .buoc {
+            display: inline-block;
+            background: #eef2ff;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+        .ghichu {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #475569;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+        nav a.active {
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 10px;
+        }
+        .n.xong {
+            border: 2px solid #22c55e;
+        }
+        .n .hoanthanh {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            font-size: 14px;
+            color: #16a34a;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+        .n .hoanthanh input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .tim-kiem-khung {
+            max-width: 500px;
+            margin: 0 auto 35px;
+            position: relative;
+        }
+        .tim-kiem-khung input {
+            width: 100%;
+            padding: 12px 18px 12px 40px;
+            border-radius: 30px;
+            border: 1px solid #e2e8f0;
+            font-size: 15px;
+            background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>') no-repeat 16px center;
+        }
+        .tim-kiem-khung input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        #khong-co-ket-qua {
+            display: none;
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+        .tiendo-khung {
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+        .tiendo-nhan {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+        .tiendo-thanh {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .tiendo-fill {
+            height: 100%;
+            width: 0%;
+            background: #22c55e;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+    </style>
+    <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+    <div class="header-dieukhien">
+        <button id="toggle-theme" class="btn-icon" title="Chuyển giao diện sáng/tối">🌙</button>
+        <button id="hamburger" class="btn-icon hamburger" title="Menu">☰</button>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html" >Lý thuyết</a>
+        <a href="./hinhanh.html" >Hình ảnh</a>
+        <a href="./vide.html" >Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./quiz.html">Câu hỏi</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section id="baihoc">
+    <div class="title">
+        <h2>
+            Lộ trình học Tin học
+        </h2>
+    </div>
+    <p class="ghichu">
+        8 bước học theo thứ tự từ nền tảng đến ứng dụng thực tế, giúp người mới
+        bắt đầu tiếp cận Tin học văn phòng một cách có hệ thống.
+    </p>
+    <div class="tim-kiem-khung">
+        <input type="text" id="tim-kiem-baihoc" placeholder="Tìm kiếm bài học (VD: Excel, Word, an toàn thông tin...)">
+    </div>
+    <p id="khong-co-ket-qua">Không tìm thấy bài học phù hợp với từ khóa.</p>
+    <div class="tiendo-khung">
+        <div class="tiendo-nhan">
+            <span>Tiến độ học tập</span>
+            <span id="tiendo-text">0/8 bước hoàn thành</span>
+        </div>
+        <div class="tiendo-thanh">
+            <div class="tiendo-fill" id="tiendo-fill"></div>
+        </div>
+    </div>
+    <div class="bang">
+        <div class="n" data-buoc="1">
+            <span class="buoc">Bước 01</span>
+            <h3>
+                Tin học văn phòng cơ bản
+            </h3>
+            <p>
+                - Tìm hiểu tin học là gì, phím tắt cơ bản của tin học
+                văn phòng?
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="1"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="2">
+            <span class="buoc">Bước 02</span>
+            <h3>
+                Ứng dụng
+            </h3>
+            <p>
+                - Tìm hiểu Word, Excel, PowerPoint
+                và các chức năng phổ biến.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="2"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="3">
+            <span class="buoc">Bước 03</span>
+            <h3>
+                Word
+            </h3>
+            <p>
+                - Tìm hiểu word, phím tắt trong word,
+                văn bản và thuộc tính.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="3"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="4">
+            <span class="buoc">Bước 04</span>
+            <h3>
+                Word nâng cao
+            </h3>
+            <p>
+                - Tạo mục lục, trộn thư (Mail Merge), chèn bảng
+                và định dạng trang in.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="4"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="5">
+            <span class="buoc">Bước 05</span>
+            <h3>
+                Excel
+            </h3>
+            <p>
+                - Căn chỉnh cột dòng trong Excel và những 
+                hàm trong Excel.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="5"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="6">
+            <span class="buoc">Bước 06</span>
+            <h3>
+                Excel nâng cao
+            </h3>
+            <p>
+                - Hàm điều kiện (IF, VLOOKUP), lọc dữ liệu
+                và tạo biểu đồ trực quan.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="6"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="7">
+            <span class="buoc">Bước 07</span>
+            <h3>
+                PowerPoint
+            </h3>
+            <p>
+                - Tạo bố cục trình chiếu và chức năng
+                trong PowerPoint.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="7"> Đã hoàn thành
+            </label>
+        </div>
+        <div class="n" data-buoc="8">
+            <span class="buoc">Bước 08</span>
+            <h3>
+                Kỹ năng văn phòng tổng hợp
+            </h3>
+            <p>
+                - Quản lý file, sử dụng email và các nguyên tắc
+                an toàn thông tin cơ bản.
+            </p>
+            <label class="hoanthanh">
+                <input type="checkbox" class="check-buoc" data-buoc="8"> Đã hoàn thành
+            </label>
+        </div>
+    </div>
+</section>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+    (function () {
+        const KHOA = "tinhocvp_baihoc_tiendo";
+        const checkboxes = document.querySelectorAll(".check-buoc");
+        const tiendoFill = document.getElementById("tiendo-fill");
+        const tiendoText = document.getElementById("tiendo-text");
+        const tongSo = checkboxes.length;
+
+        function layDaLuu() {
+            try {
+                return JSON.parse(localStorage.getItem(KHOA)) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function capNhatTiendo() {
+            const daLuu = layDaLuu();
+            let soXong = 0;
+            checkboxes.forEach((cb) => {
+                const buoc = cb.dataset.buoc;
+                const the = cb.closest(".n");
+                if (daLuu[buoc]) {
+                    cb.checked = true;
+                    the.classList.add("xong");
+                    soXong++;
+                } else {
+                    cb.checked = false;
+                    the.classList.remove("xong");
+                }
+            });
+            const phanTram = tongSo ? Math.round((soXong / tongSo) * 100) : 0;
+            tiendoFill.style.width = phanTram + "%";
+            tiendoText.textContent = soXong + "/" + tongSo + " bước hoàn thành";
+        }
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener("change", () => {
+                const daLuu = layDaLuu();
+                daLuu[cb.dataset.buoc] = cb.checked;
+                localStorage.setItem(KHOA, JSON.stringify(daLuu));
+                capNhatTiendo();
+                toast(cb.checked ? "Đã đánh dấu hoàn thành ✓" : "Đã bỏ đánh dấu");
+            });
+        });
+
+        capNhatTiendo();
+    })();
+    (function () {
+        const oTimKiem = document.getElementById("tim-kiem-baihoc");
+        const the = document.querySelectorAll(".n");
+        const khongCoKq = document.getElementById("khong-co-ket-qua");
+        if (!oTimKiem) return;
+
+        oTimKiem.addEventListener("input", () => {
+            const tuKhoa = oTimKiem.value.trim().toLowerCase();
+            let soHienThi = 0;
+            the.forEach((card) => {
+                const noiDung = card.textContent.toLowerCase();
+                const khop = noiDung.includes(tuKhoa);
+                card.style.display = khop ? "" : "none";
+                if (khop) soHienThi++;
+            });
+            khongCoKq.style.display = soHienThi === 0 ? "block" : "none";
+        });
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }
+        nav a.active {
+            background-color: #38bdf8;
+            color: white;
+            border-radius: 10px;
+        }
+        section {
+            padding: 60px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .title p {
+            text-align: center;
+            color: #475569;
+            max-width: 600px;
+            margin: 10px auto 40px;
+        }
+
+        /* Khung quiz */
+        .quiz-khung {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .quiz-thanh-tien-do {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        .quiz-thanh-tien-do-fill {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+        .quiz-so-cau {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .quiz-cauhoi {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 22px;
+        }
+        .quiz-dapan {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .quiz-dapan button {
+            text-align: left;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            font-size: 15px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .quiz-dapan button:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+        .quiz-dapan button.dung {
+            border-color: #22c55e;
+            background: #dcfce7;
+            font-weight: bold;
+        }
+        .quiz-dapan button.sai {
+            border-color: #ef4444;
+            background: #fee2e2;
+        }
+        .quiz-dapan button:disabled {
+            cursor: default;
+        }
+        .quiz-giaithich {
+            margin-top: 18px;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #334155;
+            display: none;
+        }
+        .quiz-giaithich.hien {
+            display: block;
+        }
+        .quiz-tiep {
+            margin-top: 22px;
+            width: 100%;
+            padding: 13px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+        .quiz-tiep.hien {
+            display: block;
+        }
+        .quiz-tiep:hover {
+            background: #1d4ed8;
+        }
+        .quiz-ketqua {
+            text-align: center;
+            display: none;
+        }
+        .quiz-ketqua.hien {
+            display: block;
+        }
+        .quiz-ketqua .diem {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 15px 0 5px;
+        }
+        .quiz-ketqua .nhanxet {
+            color: #475569;
+            margin-bottom: 25px;
+        }
+        .quiz-lambailai {
+            padding: 13px 30px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .quiz-lambailai:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+    <div class="header-dieukhien">
+        <button id="toggle-theme" class="btn-icon" title="Chuyển giao diện sáng/tối">🌙</button>
+        <button id="hamburger" class="btn-icon hamburger" title="Menu">☰</button>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./quiz.html">Câu hỏi</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+
+<section id="quiz">
+    <div class="title">
+        <h2>Câu hỏi trắc nghiệm</h2>
+        <p>10 câu hỏi tổng hợp Word, Excel, PowerPoint và an toàn thông tin — kiểm tra nhanh kiến thức của bạn.</p>
+    </div>
+
+    <div class="quiz-khung">
+        <div id="quiz-dangchoi">
+            <div class="quiz-thanh-tien-do">
+                <div class="quiz-thanh-tien-do-fill" id="quiz-thanhtiendo-fill"></div>
+            </div>
+            <div class="quiz-so-cau" id="quiz-so-cau">Câu 1/10</div>
+            <div class="quiz-cauhoi" id="quiz-cauhoi"></div>
+            <div class="quiz-dapan" id="quiz-dapan"></div>
+            <div class="quiz-giaithich" id="quiz-giaithich"></div>
+            <button class="quiz-tiep" id="quiz-tiep">Câu tiếp theo →</button>
+        </div>
+
+        <div class="quiz-ketqua" id="quiz-ketqua">
+            <div class="quiz-so-cau">Kết quả của bạn</div>
+            <div class="diem" id="quiz-diem-cuoi">0/10</div>
+            <div class="nhanxet" id="quiz-nhanxet"></div>
+            <button class="quiz-lambailai" id="quiz-lambailai">Làm lại từ đầu</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+    const DANH_SACH_CAU_HOI = [
+        {
+            hoi: "Microsoft Word chủ yếu được dùng để làm gì?",
+            dapan: ["Soạn thảo văn bản", "Tính toán số liệu", "Thiết kế slide thuyết trình", "Quản lý cơ sở dữ liệu"],
+            dung: 0,
+            giaithich: "Word là phần mềm soạn thảo văn bản, dùng để tạo và định dạng tài liệu chữ."
+        },
+        {
+            hoi: "Hàm nào dùng để tính tổng các giá trị trong Excel?",
+            dapan: ["AVERAGE", "SUM", "COUNT", "MAX"],
+            dung: 1,
+            giaithich: "SUM dùng để tính tổng. AVERAGE tính trung bình, COUNT đếm số ô, MAX tìm giá trị lớn nhất."
+        },
+        {
+            hoi: "Trong Excel, địa chỉ ô nào là địa chỉ tuyệt đối?",
+            dapan: ["A1", "$A$1", "A:1", "1A"],
+            dung: 1,
+            giaithich: "Địa chỉ tuyệt đối dùng ký hiệu $ trước cột và hàng (ví dụ $A$1), giữ nguyên khi sao chép công thức."
+        },
+        {
+            hoi: "Trong PowerPoint, \"Transition\" là hiệu ứng dùng cho việc gì?",
+            dapan: ["Hiệu ứng chuyển giữa các slide", "Hiệu ứng cho từng đối tượng trong slide", "Định dạng phông chữ", "Chèn video"],
+            dung: 0,
+            giaithich: "Transition là hiệu ứng chuyển động khi chuyển từ slide này sang slide khác."
+        },
+        {
+            hoi: "Tệp Word thường có phần mở rộng nào?",
+            dapan: [".xlsx", ".pptx", ".docx", ".pdf"],
+            dung: 2,
+            giaithich: "Word lưu tệp với đuôi .doc hoặc .docx. .xlsx là Excel, .pptx là PowerPoint."
+        },
+        {
+            hoi: "Hàm IF trong Excel dùng để làm gì?",
+            dapan: ["Đếm số ô trống", "Kiểm tra điều kiện và trả về kết quả tương ứng", "Sắp xếp dữ liệu", "Tạo biểu đồ"],
+            dung: 1,
+            giaithich: "Hàm IF kiểm tra một điều kiện đúng/sai và trả về giá trị tương ứng cho từng trường hợp."
+        },
+        {
+            hoi: "Chức năng nào trong Word dùng để in hàng loạt văn bản với nội dung khác nhau cho từng người nhận?",
+            dapan: ["Mail Merge (Trộn thư)", "Table of Contents", "Track Changes", "Page Break"],
+            dung: 0,
+            giaithich: "Mail Merge (trộn thư) giúp tạo nhiều bản in cá nhân hóa từ một mẫu văn bản và một danh sách dữ liệu."
+        },
+        {
+            hoi: "Đâu là một nguyên tắc an toàn thông tin cơ bản khi dùng máy tính văn phòng?",
+            dapan: ["Dùng chung một mật khẩu cho mọi tài khoản", "Không cần cập nhật phần mềm diệt virus", "Đặt mật khẩu mạnh và không chia sẻ cho người khác", "Mở mọi email lạ để kiểm tra nội dung"],
+            dung: 2,
+            giaithich: "Đặt mật khẩu mạnh, không chia sẻ, và cẩn trọng với email lạ là các nguyên tắc an toàn thông tin cơ bản."
+        },
+        {
+            hoi: "Trong Excel, hàm VLOOKUP thường dùng để làm gì?",
+            dapan: ["Vẽ biểu đồ", "Dò tìm dữ liệu theo cột trong bảng tham chiếu", "Tính giá trị trung bình", "Định dạng có điều kiện"],
+            dung: 1,
+            giaithich: "VLOOKUP tìm kiếm một giá trị theo cột đầu tiên của bảng và trả về giá trị tương ứng ở cột khác."
+        },
+        {
+            hoi: "Bộ phần mềm nào sau đây KHÔNG thuộc Microsoft Office?",
+            dapan: ["Word", "Excel", "PowerPoint", "Photoshop"],
+            dung: 3,
+            giaithich: "Photoshop là phần mềm chỉnh sửa ảnh của Adobe, không thuộc bộ Microsoft Office."
+        }
+    ];
+    let cauHienTai = 0;
+    let soCauDung = 0;
+    let daChonCauNay = false;
+    const oSoCau = document.getElementById("quiz-so-cau");
+    const oCauHoi = document.getElementById("quiz-cauhoi");
+    const oDapAn = document.getElementById("quiz-dapan");
+    const oGiaiThich = document.getElementById("quiz-giaithich");
+    const oNutTiep = document.getElementById("quiz-tiep");
+    const oThanhTienDoFill = document.getElementById("quiz-thanhtiendo-fill");
+    const oDangChoi = document.getElementById("quiz-dangchoi");
+    const oKetQua = document.getElementById("quiz-ketqua");
+    const oDiemCuoi = document.getElementById("quiz-diem-cuoi");
+    const oNhanXet = document.getElementById("quiz-nhanxet");
+    function hienThiCauHoi() {
+        daChonCauNay = false;
+        const cau = DANH_SACH_CAU_HOI[cauHienTai];
+        oSoCau.textContent = `Câu ${cauHienTai + 1}/${DANH_SACH_CAU_HOI.length}`;
+        oCauHoi.textContent = cau.hoi;
+        oThanhTienDoFill.style.width = (cauHienTai / DANH_SACH_CAU_HOI.length) * 100 + "%";
+        oGiaiThich.classList.remove("hien");
+        oGiaiThich.textContent = "";
+        oNutTiep.classList.remove("hien");
+        oNutTiep.textContent = (cauHienTai === DANH_SACH_CAU_HOI.length - 1) ? "Xem kết quả →" : "Câu tiếp theo →";
+        oDapAn.innerHTML = "";
+        cau.dapan.forEach((dapAn, idx) => {
+            const nut = document.createElement("button");
+            nut.textContent = dapAn;
+            nut.addEventListener("click", () => chonDapAn(idx));
+            oDapAn.appendChild(nut);
+        });
+    }
+    function chonDapAn(idx) {
+        if (daChonCauNay) return;
+        daChonCauNay = true;
+        const cau = DANH_SACH_CAU_HOI[cauHienTai];
+        const nutList = oDapAn.querySelectorAll("button");
+
+        nutList.forEach((nut, i) => {
+            nut.disabled = true;
+            if (i === cau.dung) nut.classList.add("dung");
+            else if (i === idx) nut.classList.add("sai");
+        });
+
+        if (idx === cau.dung) {
+            soCauDung++;
+            toast("Chính xác! ✓");
+        } else {
+            toast("Chưa đúng, xem giải thích bên dưới");
+        }
+
+        oGiaiThich.textContent = "💡 " + cau.giaithich;
+        oGiaiThich.classList.add("hien");
+        oNutTiep.classList.add("hien");
+    }
+
+    oNutTiep.addEventListener("click", () => {
+        cauHienTai++;
+        if (cauHienTai < DANH_SACH_CAU_HOI.length) {
+            hienThiCauHoi();
+        } else {
+            ketThucQuiz();
+        }
+    });
+
+    function ketThucQuiz() {
+        oThanhTienDoFill.style.width = "100%";
+        oDangChoi.style.display = "none";
+        oKetQua.classList.add("hien");
+        oDiemCuoi.textContent = `${soCauDung}/${DANH_SACH_CAU_HOI.length}`;
+
+        let nhanXet;
+        const tiLe = soCauDung / DANH_SACH_CAU_HOI.length;
+        if (tiLe === 1) nhanXet = "Xuất sắc! Bạn nắm rất vững kiến thức Tin học văn phòng. 🎉";
+        else if (tiLe >= 0.7) nhanXet = "Khá tốt! Xem lại vài phần còn thiếu ở trang Lý thuyết nhé.";
+        else if (tiLe >= 0.4) nhanXet = "Cần ôn tập thêm — hãy xem lại phần Bài học và Lý thuyết.";
+        else nhanXet = "Đừng nản! Hãy học lại các bài học cơ bản rồi quay lại thử sức nhé.";
+        oNhanXet.textContent = nhanXet;
+        const diemCaoCu = parseInt(localStorage.getItem("tinhocvp_quiz_diem_cao") || "0", 10);
+        if (soCauDung >= diemCaoCu) {
+            localStorage.setItem("tinhocvp_quiz_diem_cao", String(soCauDung));
+        }
+        localStorage.setItem("tinhocvp_quiz_tongcau", String(DANH_SACH_CAU_HOI.length));
+
+        toast("Đã lưu điểm quiz của bạn");
+    }
+    document.getElementById("quiz-lambailai").addEventListener("click", () => {
+        cauHienTai = 0;
+        soCauDung = 0;
+        oKetQua.classList.remove("hien");
+        oDangChoi.style.display = "block";
+        hienThiCauHoi();
+    });
+
+    hienThiCauHoi();
+</script>
+</body>
+</html>
