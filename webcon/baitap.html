@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+         nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }
+        .trangchu {
+            height: 550px;
+            padding: 80px 7%;
+            display: grid;
+            align-items: center;
+            gap: 50px;
+        }
+        .trangchu h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin: 15px 0;
+        }
+        .trangchu h1 span {
+            color: #2563eb;
+        }
+        .trangchu p {
+            font-size: 19px;
+            color: #475569;
+            width: 650px;
+        }
+        .bđ {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .bđ:hover {
+            background: #1d4ed8;
+            color: yellow;
+        }       
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .bang {
+            display: grid;
+            grid-template-columns:auto auto auto;
+            gap: 25px;
+        }
+        .n {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .n:hover {
+            transform: translateY(-15px);
+        }
+        .n h3 {
+            color: #2563eb;
+            margin: 10px 0;
+        }
+        .noidung {
+            width: 900px;
+            margin: auto;
+            background: #0b1120;
+            color: white;
+            padding: 30px;
+            }
+        #tailieu{
+            color:blue;
+            text-decoration: none;
+            margin-right:auto ;
+            text-align: right;
+        }
+        .anh {
+            display: grid;
+            grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .anh img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .anh img:hover {
+            transform: scale(1.2);
+        }
+        .video {
+            width: 720px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 18px;
+        }
+        .video img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px gray;
+        }
+        .btvn {
+            color: white;
+            width: 1200px;
+            margin: auto;
+            margin-bottom: 0px ;
+            background: black;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow:0 5px 20px black;
+        }    
+        .btvn a{
+            color: blue;
+            text-align: right;
+            justify-content: right;
+        }
+        .btvn h3 {
+            color: #38bdf8;
+            margin: 22px 0 8px;
+        }
+        .btvn h3:first-child {
+            margin-top: 0;
+        }
+        .btvn p {
+            margin-bottom: 8px;
+        }
+        .huongdan {
+            width: 1200px;
+            margin: 0 auto 25px;
+            background: #eef2ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 10px;
+            padding: 20px 25px;
+            color: #1e293b;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section id="baitap">
+    <div class="title">
+        <h2>
+                Bài tập về nhà
+        </h2>
+    </div>
+    <div class="huongdan">
+        <strong>Hướng dẫn nộp bài:</strong> Làm bài vào file Word hoặc PDF, đặt tên file theo họ tên,
+        sau đó nộp qua đường link Google Drive bên dưới.
+    </div>
+    <div class="btvn">
+        <div>
+        <h3>A. Kiến thức chung</h3>
+        <p>Câu 1. Trình bày khái niệm Tin học văn phòng. 
+        Hãy nêu vai trò của Tin học văn phòng trong học tập và công việc?</p>
+
+        <h3>B. Microsoft Word</h3>
+        <p>Câu 2. Microsoft Word là gì? 
+        Hãy trình bày các chức năng cơ bản của Microsoft Word và cho biết cách định dạng một đoạn văn bản?</p>
+        <p>Câu 3. Trình bày cách tạo, lưu, mở và in một văn bản trong Microsoft Word. 
+        Nêu một số định dạng tệp phổ biến của Word?</p>
+        <p>Câu 4. Hãy trình bày cách chèn và định dạng bảng (Table) trong Microsoft Word. 
+        Nêu các thao tác có thể thực hiện đối với một bảng?</p>
+        <p>Câu 5. Trình bày cách sử dụng chức năng trộn thư (Mail Merge) trong Word. 
+        Chức năng này thường được ứng dụng trong những trường hợp nào?</p>
+
+        <h3>C. Microsoft Excel</h3>
+        <p>Câu 6. Microsoft Excel là gì?
+        Hãy trình bày cấu trúc của một bảng tính Excel và phân biệt ô, hàng, cột và trang tính?</p>
+        <p>Câu 7. Trình bày cách sử dụng các hàm SUM, AVERAGE, MAX, MIN và COUNT trong Microsoft Excel. 
+        Cho ví dụ minh họa cho từng hàm?</p>
+        <p>Câu 8. Hãy giải thích khái niệm địa chỉ ô tương đối và địa chỉ ô tuyệt đối trong Excel. 
+        Cho ví dụ và nêu trường hợp sử dụng của từng loại?</p>
+        <p>Câu 9. Trình bày cách sử dụng hàm điều kiện IF và hàm VLOOKUP trong Excel. 
+        Cho ví dụ minh họa cụ thể?</p>
+
+        <h3>D. Microsoft PowerPoint</h3>
+        <p>Câu 10. Microsoft PowerPoint là gì? 
+        Hãy trình bày các bước cơ bản để tạo một bài thuyết trình bằng PowerPoint?</p>
+        <p>Câu 11. Trình bày cách chèn hình ảnh, âm thanh, video và hiệu ứng chuyển slide trong Microsoft PowerPoint. 
+        Theo em, cần lưu ý gì để bài thuyết trình dễ theo dõi?</p>
+
+        <h3>E. An toàn thông tin</h3>
+        <p>Câu 12. Hãy nêu các nguyên tắc cơ bản để bảo đảm an toàn và bảo mật thông tin khi sử dụng máy tính 
+        và Internet trong môi trường văn phòng?</p>
+        </div>
+        <a href="https://drive.google.com/drive/folders/10M5jtUxFeshGahiLB4NtN2-7uSMA6JvB?usp=drive_link" target="_blank">Link nộp bài tập</a>
+    </div>
+</section>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+</body>
+</html>

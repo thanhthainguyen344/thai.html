@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: black;
+            padding: 18px 7%;
+            display: flex;
+            justify-content:right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }     
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .video {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 18px;
+            display: grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .video figure {
+            margin: 0;
+        }
+        .video img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px gray;
+            transition: 0.3s;
+        }
+        .video img:hover {
+            transform: scale(1.03);
+        }
+        .video figcaption {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+</header>    
+    <nav>
+        <a href="../index.html" >Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html">Lý thuyết</a>
+        <a href="./hinhanh.html">Hình ảnh</a>
+        <a href="./vide.html">Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section class="video">
+    <div class="title">
+        <h2>
+             Video học Tin học
+        </h2>    
+    </div>
+    <div class="video">
+        <figure>
+            <a href="https://youtu.be/kEQSq-zQias?si=hKSMZ2LZeiAwFP_C"><img src="../img/anh4" alt="Video hướng dẫn Word"></a>
+            <figcaption>Hướng dẫn cơ bản Microsoft Word</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/oVvV6HvAKc8?si=CRfEV65uVdVL9_dG"><img src="../img/anh8" alt="Video hướng dẫn Excel"></a>
+            <figcaption>Hướng dẫn hàm cơ bản trong Excel</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/9gPJtkthTYs?si=nb9_7CMiBbOw43f7"><img src="../img/anh9" alt="Video hướng dẫn PowerPoint"></a>
+            <figcaption>Hướng dẫn tạo slide PowerPoint</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/2u4YbJJvVWs"><img src="../img/anh14.jpg" alt="Video Excel nâng cao"></a>
+            <figcaption>Hàm Excel nâng cao (IF, VLOOKUP)</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/YSuwB4bFCLU"><img src="../img/anh15.jpg" alt="Video hiệu ứng PowerPoint"></a>
+            <figcaption>Hiệu ứng chuyển động trong PowerPoint</figcaption>
+        </figure>
+        <figure>
+            <a href="https://youtu.be/mPQL9hHm_5o"><img src="../img/anh16" alt="Video mẹo tin học văn phòng"></a>
+            <figcaption>Mẹo và phím tắt tin học văn phòng</figcaption>
+        </figure>
+    </div>
+</section>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+</body>
+</html>

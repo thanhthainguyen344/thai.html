@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TIN HỌC VĂN PHÒNG</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: pink;
+            color: rgb(0, 0, 0);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tieude{
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .tieude span{
+            color: red;
+        }
+        nav {
+            height: 50px;
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            box-shadow: 2px 5px 10px gray;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: larger;
+            border-top: 0px;
+            padding:10px ;
+            align-items: center;
+        }
+        nav a:hover {
+            background-color: aqua;
+            color: #38bdf8;
+            gap: 20px;
+            border-radius: 10px;
+        }             
+        section {
+            padding: 70px 7%;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title h2 {
+            font-size: 36px;
+            color: #0f172a;
+        }
+        .bang {
+            display: grid;
+            grid-template-columns:auto auto auto;
+            gap: 25px;
+        }
+        .n {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .n:hover {
+            transform: translateY(-15px);
+        }
+        .n h3 {
+            color: #2563eb;
+            margin: 10px 0;
+        }
+        .n .buoc {
+            display: inline-block;
+            background: #eef2ff;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+        .ghichu {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #475569;
+        }
+        footer {
+            background: pink;
+            color: rgb(0, 0, 0);;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="tieude">
+        TIN HỌC <span>VĂN PHÒNG</span>
+    </div>
+</header>
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="./baihoc.html">Bài học</a>
+        <a href="./lythuyet.html" >Lý thuyết</a>
+        <a href="./hinhanh.html" >Hình ảnh</a>
+        <a href="./vide.html" >Video</a>
+        <a href="./baitap.html">Bài tập</a>
+        <a href="./lienhe.html">Liên hệ</a>
+    </nav>
+<section id="baihoc">
+    <div class="title">
+        <h2>
+            Lộ trình học Tin học
+        </h2>
+    </div>
+    <p class="ghichu">
+        8 bước học theo thứ tự từ nền tảng đến ứng dụng thực tế, giúp người mới
+        bắt đầu tiếp cận Tin học văn phòng một cách có hệ thống.
+    </p>
+    <div class="bang">
+        <div class="n">
+            <span class="buoc">Bước 01</span>
+            <h3>
+                Tin học văn phòng cơ bản
+            </h3>
+            <p>
+                - Tìm hiểu tin học là gì, phím tắt cơ bản của tin học
+                văn phòng?
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 02</span>
+            <h3>
+                Ứng dụng
+            </h3>
+            <p>
+                - Tìm hiểu Word, Excel, PowerPoint
+                và các chức năng phổ biến.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 03</span>
+            <h3>
+                Word
+            </h3>
+            <p>
+                - Tìm hiểu word, phím tắt trong word,
+                văn bản và thuộc tính.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 04</span>
+            <h3>
+                Word nâng cao
+            </h3>
+            <p>
+                - Tạo mục lục, trộn thư (Mail Merge), chèn bảng
+                và định dạng trang in.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 05</span>
+            <h3>
+                Excel
+            </h3>
+            <p>
+                - Căn chỉnh cột dòng trong Excel và những 
+                hàm trong Excel.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 06</span>
+            <h3>
+                Excel nâng cao
+            </h3>
+            <p>
+                - Hàm điều kiện (IF, VLOOKUP), lọc dữ liệu
+                và tạo biểu đồ trực quan.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 07</span>
+            <h3>
+                PowerPoint
+            </h3>
+            <p>
+                - Tạo bố cục trình chiếu và chức năng
+                trong PowerPoint.
+            </p>
+        </div>
+        <div class="n">
+            <span class="buoc">Bước 08</span>
+            <h3>
+                Kỹ năng văn phòng tổng hợp
+            </h3>
+            <p>
+                - Quản lý file, sử dụng email và các nguyên tắc
+                an toàn thông tin cơ bản.
+            </p>
+        </div>
+    </div>
+</section>
+<footer>
+    <div>
+        Thông tin liên hệ : Nguyễn Thanh Thái 
+        <br>SĐT : 0345649219
+        <br>Địa chỉ : Ấp Tân Thạnh, Xã tân Long, Tỉnh Đồng tháp
+
+    </div>
+    <p>
+        Phát triển bởi <a href="">Công Ty trách nhiệm hữu hạn</a>
+    </p>
+</footer>
+</body>
+</html>
