@@ -1,0 +1,193 @@
+header {
+    justify-content: space-between !important;
+}
+.header-dieukhien {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+    color: #1e293b;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
+}
+.btn-icon:hover {
+    background: rgba(0,0,0,0.18);
+}
+.hamburger {
+    display: none;
+}
+@media (max-width: 860px) {
+    .hamburger {
+        display: flex;
+    }
+    nav {
+        display: none;
+        flex-direction: column;
+        height: auto;
+        gap: 0;
+    }
+    nav.mo {
+        display: flex;
+    }
+    nav a {
+        padding: 14px 20px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    nav a:hover {
+        border-radius: 0;
+    }
+}
+html.dark body {
+    background: #0b1120 !important;
+    color: #e2e8f0 !important;
+}
+html.dark header {
+    background: #3a1f2b !important;
+}
+html.dark .tieude {
+    color: #f1f5f9 !important;
+}
+html.dark nav {
+    background: #111827 !important;
+    box-shadow: 2px 5px 10px rgba(0,0,0,0.4) !important;
+}
+html.dark nav a {
+    color: #e2e8f0 !important;
+    border-bottom-color: #1f2937 !important;
+}
+html.dark nav a:hover {
+    background-color: #1d4ed8 !important;
+    color: white !important;
+}
+html.dark nav a.active {
+    background-color: #38bdf8 !important;
+    color: #0b1120 !important;
+}
+html.dark .btn-icon {
+    background: rgba(255,255,255,0.1) !important;
+    color: #f1f5f9 !important;
+}
+html.dark .btn-icon:hover {
+    background: rgba(255,255,255,0.22) !important;
+}
+html.dark footer {
+    background: #3a1f2b !important;
+    color: #f1f5f9 !important;
+}
+html.dark footer a {
+    color: #93c5fd !important;
+}
+html.dark .title h2,
+html.dark .trangchu h1,
+html.dark h1, html.dark h2, html.dark h3 {
+    color: #f1f5f9 !important;
+}
+html.dark .title p,
+html.dark .trangchu p,
+html.dark .ghichu,
+html.dark p {
+    color: #cbd5e1 !important;
+}
+html.dark .n,
+html.dark .form-lienhe,
+html.dark .khoahoc-list .card,
+html.dark .danhgia-list .card,
+html.dark .gioithieu-list .the,
+html.dark .quiz-khung,
+html.dark .noidung .muc-noidung,
+html.dark .thongtin {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+html.dark .n h3,
+html.dark .khoahoc-list h3,
+html.dark .gioithieu-list h3,
+html.dark .form-lienhe h3,
+html.dark .quiz-cauhoi {
+    color: #7dd3fc !important;
+}
+html.dark .n p,
+html.dark .khoahoc-list p,
+html.dark .gioithieu-list p,
+html.dark .danhgia-list .noidung {
+    color: #94a3b8 !important;
+}
+html.dark .quiz-dapan button {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+html.dark .quiz-dapan button.dung {
+    background: #14532d !important;
+    border-color: #22c55e !important;
+}
+html.dark .quiz-dapan button.sai {
+    background: #7f1d1d !important;
+    border-color: #ef4444 !important;
+}
+html.dark .quiz-giaithich {
+    background: #0f172a !important;
+    color: #cbd5e1 !important;
+}
+html.dark .quiz-so-cau {
+    color: #94a3b8 !important;
+}
+html.dark .khung-lienhe .form-lienhe input,
+html.dark .khung-lienhe .form-lienhe textarea {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+html.dark .gioithieu {
+    background: #0b1120 !important;
+}
+html.dark .danhgia {
+    background: #111827 !important;
+}
+html.dark .khoahoc-list .icon,
+html.dark .gioithieu-list .icon {
+    background: #0f172a !important;
+}
+html.dark .tiendo-thanh {
+    background: #1f2937 !important;
+}
+html.dark .huongdan {
+    background: #111827 !important;
+    color: #e2e8f0 !important;
+}
+html.dark .btvn {
+    background: #000000 !important;
+}
+html.dark #dashboard-tiendo .the {
+    background: #1e293b !important;
+}
+.toast-thongbao {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translate(-50%, 20px);
+    background: #0f172a;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 3000;
+}
+.toast-thongbao.hien {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
